@@ -6,10 +6,18 @@ const path = require('path');
    entry: {
      index: './src/index.js',
    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+      ],
+    },
    devtool: 'inline-source-map',
-  devServer: {
-    static: './dist',
-  },
+    devServer: {
+      static: './dist',
+    },
    plugins: [
      new HtmlWebpackPlugin({
       template: './src/index.html'

@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.drag_icon {
+  background-image: url(/src/img/icons/three-dots-vertical-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
