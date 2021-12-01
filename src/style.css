@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+  color: gray;
+}
+
+main {
+  padding: 1rem;
+}
+
+section {
+  box-shadow: 4px 4px 10px gray;
+  border-radius: 0.25rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+textarea {
+  overflow: hidden;
+  cursor: default;
+  border: none;
+  flex-grow: 2;
+  color: black;
+  font-weight: lighter;
+}
+
+textarea::-webkit-resizer {
+  display: none;
+}
+
+textarea:focus-visible {
+  outline: none;
+
+  /* background: yellow */
+  text-decoration: none;
+  color: #000;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.cell {
+  padding: 1rem;
+  border-bottom: 1px solid gray;
+  width: 100%;
+}
+
+.cell_textarea {
+  padding-left: 1rem;
+}
+
+.task_cell {
+  padding: 0;
+}
+
+#add_task {
+  padding: 1rem;
+  flex-grow: 2;
+}
+
+section > :last-child {
+  border-bottom: 0;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.drag_icon {
+  background-image: url(/src/img/icons/three-dots-vertical-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.mark {
+  color: gray;
+  text-decoration: line-through;
+}
+
+#enter_icon {
+  width: 10px;
+  height: 10px;
+  background-image: url(/src/img/icons/arrow-enter-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: content-box;
+  background-size: cover;
+  margin-right: 20px;
+}
+
+#clear_button:hover {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.drag_icon:hover {
+  cursor: move;
+}
