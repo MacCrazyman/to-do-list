@@ -3,10 +3,21 @@
   margin: 0;
 }
 
+ul {
+  list-style-type: none;
+  padding:1rem;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .drag_icon {
   background-image: url(/src/img/icons/three-dots-vertical-svgrepo-com.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 20px;
   height: 20px;
+  margin: 0;
 }
