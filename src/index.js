@@ -21,7 +21,7 @@ const list = [
 ];
 
 // Query selectors
-const listContainer = document.querySelector('#listContainer');
+const listContainer = document.querySelector('#list_container');
 
 // Functions
 function createTask(task) {
