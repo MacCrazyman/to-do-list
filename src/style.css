@@ -22,7 +22,7 @@ ul {
 textarea {
   overflow: hidden;
   cursor: default;
-  border:none;
+  border: none;
   flex-grow: 2;
   color: black;
   font-weight: lighter;
@@ -30,6 +30,7 @@ textarea {
 
 textarea:focus-visible {
   outline: none;
+
   /* background: yellow */
   text-decoration: none;
   color: #000;
@@ -64,7 +65,7 @@ textarea::-webkit-resizer {
   flex-grow: 2;
 }
 
-section> :last-child {
+section > :last-child {
   border-bottom: 0;
   background-color: #f0f0f0;
   text-align: center;
@@ -102,6 +103,5 @@ section> :last-child {
 }
 
 .drag_icon:hover {
-  cursor:move;
-  backdrop-filter: black;
+  cursor: move;
 }

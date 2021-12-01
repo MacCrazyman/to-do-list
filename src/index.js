@@ -1,50 +1,49 @@
 // Imports
-import './style.css'
+import './style.css';
 
 // variables
 const list = [
   {
-    description : 'some description',
-    completed : 0,
-    index : 0
+    description: 'some description',
+    completed: 0,
+    index: 0,
   },
   {
-    description : 'today\'s task',
-    completed : 0,
-    index : 0
+    description: 'today\'s task',
+    completed: 0,
+    index: 0,
   },
   {
-    description : 'yesterday\'s tast description',
-    completed : 0,
-    index : 0
+    description: 'yesterday\'s tast description',
+    completed: 0,
+    index: 0,
   },
 ];
 
 // Query selectors
-const list_container = document.querySelector('#list_container');
+const listContainer = document.querySelector('#listContainer');
 
 // Functions
-function create_task(task){
-  const list_item = document.createElement('li')
-  // list_item.classList.add('flex')
-  list_item.innerHTML =`<div class="flex cell">
+function createTask(task) {
+  const listItem = document.createElement('li');
+  // listItem.classList.add('flex')
+  listItem.innerHTML = `<div class="flex cell">
           <input class="checkbox" type="checkbox">
           <textarea class="cell_textarea" rows="1">${task.description}</textarea>
           <div class="drag_icon"></div>
           </div>`;
-  
-  list_container.appendChild(list_item);
-  
+
+  listContainer.appendChild(listItem);
 }
 
 // Call functions
-list.forEach((task) => create_task(task))
+list.forEach((task) => createTask(task));
 
 // Event listeners
-  const check = document.querySelectorAll('.checkbox');
-  const text = document.querySelectorAll('.cell_textarea')
-  check.forEach((element) =>  {element.addEventListener('click',() => {
+const check = document.querySelectorAll('.checkbox');
+check.forEach((element) => {
+  element.addEventListener('click', () => {
     element.classList.toggle('check');
     element.nextElementSibling.classList.toggle('mark');
-  });}
-  )
+  });
+});
