@@ -94,3 +94,14 @@ section> :last-child {
   background-size: cover;
   margin-right: 20px;
 }
+
+#clear_button:hover {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.drag_icon:hover {
+  cursor:move;
+  backdrop-filter: black;
+}
