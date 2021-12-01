@@ -28,16 +28,16 @@ textarea {
   font-weight: lighter;
 }
 
+textarea::-webkit-resizer {
+  display: none;
+}
+
 textarea:focus-visible {
   outline: none;
 
   /* background: yellow */
   text-decoration: none;
   color: #000;
-}
-
-textarea::-webkit-resizer {
-  display: none;
 }
 
 .flex {
