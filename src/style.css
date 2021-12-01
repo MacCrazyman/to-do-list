@@ -28,6 +28,13 @@ textarea {
   font-weight: lighter;
 }
 
+textarea:focus-visible {
+  outline: none;
+  /* background: yellow */
+  text-decoration: none;
+  color: #000;
+}
+
 textarea::-webkit-resizer {
   display: none;
 }
@@ -70,4 +77,20 @@ section> :last-child {
   width: 20px;
   height: 20px;
   margin: 0;
+}
+
+.mark {
+  color: gray;
+  text-decoration: line-through;
+}
+
+#enter_icon {
+  width: 10px;
+  height: 10px;
+  background-image: url(/src/img/icons/arrow-enter-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: content-box;
+  background-size: cover;
+  margin-right: 20px;
 }
