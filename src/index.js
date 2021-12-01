@@ -26,12 +26,12 @@ const list_container = document.querySelector('#list_container');
 // Functions
 function create_task(task){
   const list_item = document.createElement('li')
-  list_item.classList.add('flex')
-  list_item.innerHTML =`
+  // list_item.classList.add('flex')
+  list_item.innerHTML =`<div class="flex cell">
           <input type="checkbox">
-          <textarea>${task.description}</textarea>
+          <textarea class="cell_textarea" rows="1">${task.description}</textarea>
           <div class="drag_icon"></div>
-        `;
+          </div>`;
   list_container.appendChild(list_item);
 }
 
