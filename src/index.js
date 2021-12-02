@@ -56,6 +56,10 @@ function createTask(task) {
   listContainer.appendChild(listItem);
 
   taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck)));
+  taskText.addEventListener('change', () => {
+    task.description = taskText.value;
+    list.saveStorage();
+  });
   list.saveStorage();
 }
 
