@@ -76,9 +76,8 @@ section > :last-child {
 }
 
 .drag_icon {
-  background-image: url(/src/img/icons/three-dots-vertical-svgrepo-com.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+  text-align: center;
+  font-weight: bolder;
   width: 20px;
   height: 20px;
   margin: 0;
@@ -90,14 +89,9 @@ section > :last-child {
 }
 
 #enter_icon {
-  width: 10px;
-  height: 10px;
-  background-image: url(/src/img/icons/arrow-enter-svgrepo-com.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-clip: content-box;
-  background-size: cover;
-  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 #clear_button:hover {

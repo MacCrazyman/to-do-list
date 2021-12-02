@@ -27,7 +27,7 @@ function createTask(task) {
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');
   const taskText = document.createElement('textarea');
-  const dragIcon = document.createElement('div');
+  const dragIcon = document.createElement('span');
 
   divItem.id = task.index;
   divItem.classList.add('flex', 'cell');
@@ -40,6 +40,7 @@ function createTask(task) {
   taskText.innerHTML = task.description;
 
   dragIcon.classList.add('drag_icon');
+  dragIcon.innerHTML = '&#8942;'
 
   if (task.completed) {
     taskcheck.classList.add('check');
@@ -61,3 +62,4 @@ function createTask(task) {
 window.addEventListener('DOMContentLoaded', () => {
   Object.values(list.list).forEach((value) => createTask(value));
 });
+
