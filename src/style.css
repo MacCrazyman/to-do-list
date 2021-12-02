@@ -94,6 +94,10 @@ section > :last-child {
   margin-right: 10px;
 }
 
+#enter_icon:hover {
+  cursor: pointer;
+}
+
 #clear_button:hover {
   color: #000;
   text-decoration: underline;

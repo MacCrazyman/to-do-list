@@ -8,6 +8,8 @@ const list = new Status();
 
 // Query selectors
 const listContainer = document.querySelector('#list_container');
+const enterIcon = document.querySelector('#enter_icon');
+const newTask = document.querySelector('#add_task');
 
 // Functions
 function markDone(element) {
@@ -54,12 +56,14 @@ function createTask(task) {
   listContainer.appendChild(listItem);
 
   taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck)));
+  list.saveStorage();
 }
 
 // Call functions
 
 // Event listeners
 window.addEventListener('DOMContentLoaded', () => {
-  Object.values(list.list).forEach((value) => createTask(value));
+  list.list.forEach((value) => createTask(value));
 });
 
+enterIcon.addEventListener('click',(event) => task.add(event,list,createTask))

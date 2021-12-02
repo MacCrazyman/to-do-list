@@ -1,5 +1,10 @@
-export function add (task) {
-  console.log('new task');
+export function add (event,list,createTask) {
+  list.list.push({
+    description: event.target.previousSibling.value,
+    complete: false,
+    index: list.list.length,
+  })
+  createTask (list.list[list.list.length-1])
 }
 
 export function edit (task) {
