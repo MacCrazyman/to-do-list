@@ -27,9 +27,15 @@ export default class Status {
     localStorage.setItem('list', JSON.stringify(this.list));
   }
 
-  change = (index) => {
+  mark = (index) => {
     const task = this.list[index];
-    task.completed = !task.completed;
+    task.completed = true;
+    this.saveStorage();
+  }
+
+  unmark = (index) => {
+    const task = this.list[index];
+    task.completed = false;
     this.saveStorage();
   }
 }
