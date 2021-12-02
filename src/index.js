@@ -1,26 +1,9 @@
 // Imports
 import './style.css';
-import { status } from './status';
+import Status from './status.js';
 
 // variables
-const list = new status();
-// const list = [
-//   {
-//     description: 'some description',
-//     completed: 0,
-//     index: 0,
-//   },
-//   {
-//     description: 'today\'s task',
-//     completed: 0,
-//     index: 0,
-//   },
-//   {
-//     description: 'yesterday\'s tast description',
-//     completed: 0,
-//     index: 0,
-//   },
-// ];
+const list = new Status();
 
 // Query selectors
 const listContainer = document.querySelector('#list_container');
@@ -39,7 +22,7 @@ function createTask(task) {
 }
 
 // Call functions
-for (const task in list.list) createTask(list.list[task]);
+Object.values(list.list).forEach((value) => createTask(value));
 
 // Event listeners
 const check = document.querySelectorAll('.checkbox');
