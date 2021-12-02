@@ -1,6 +1,7 @@
 // Imports
 import './style.css';
 import Status from './status.js';
+import * as task from './task.js';
 
 // variables
 const list = new Status();
