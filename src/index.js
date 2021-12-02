@@ -38,6 +38,10 @@ function createTask(task) {
   divItem.appendChild(taskText);
   divItem.appendChild(dragIcon);
   listContainer.appendChild(listItem);
+
+  taskcheck.addEventListener('click', () => {
+    taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck);
+  });
 }
 
 function markDone(element) {
@@ -57,12 +61,4 @@ function unmarkDone(element) {
 // Event listeners
 window.addEventListener('DOMContentLoaded', () => {
   Object.values(list.list).forEach((value) => createTask(value));
-
-
-const check = document.querySelectorAll('.checkbox');
-check.forEach((element) => {
-  element.addEventListener('click', () => {
-    element.checked ? markDone(element) : unmarkDone(element);
-  });
-});
 })
