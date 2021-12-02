@@ -66,4 +66,4 @@ window.addEventListener('DOMContentLoaded', () => {
   list.list.forEach((value) => createTask(value));
 });
 
-enterIcon.addEventListener('click',(event) => task.add(event,list,createTask))
+enterIcon.addEventListener('click',() => task.add(newTask,list,createTask))

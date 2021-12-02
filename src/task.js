@@ -1,10 +1,13 @@
-export function add (event,list,createTask) {
-  list.list.push({
-    description: event.target.previousSibling.value,
-    complete: false,
-    index: list.list.length,
-  })
-  createTask (list.list[list.list.length-1])
+export function add (task,list,createTask) {
+  if (task.value.trim() != '') {
+    list.list.push({
+      description: task.value,
+      completed: false,
+      index: list.list.length,
+    })
+    createTask (list.list[list.list.length-1])
+  }
+  task.value ='';
 }
 
 export function edit (task) {
