@@ -32,7 +32,6 @@ function createTask(taskElement) {
   const taskText = document.createElement('input');
   const dragIcon = document.createElement('span');
 
-  divItem.id = taskElement.index;
   divItem.classList.add('flex', 'cell');
   taskcheck.setAttribute('type', 'checkbox');
   taskcheck.classList.add('checkbox');
