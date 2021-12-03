@@ -1,46 +1,50 @@
 // Imports
 import './style.css';
 import Status from './status.js';
+import * as task from './task.js';
 
 // variables
 const list = new Status();
 
 // Query selectors
 const listContainer = document.querySelector('#list_container');
+const enterIcon = document.querySelector('#enter_icon');
+const newTask = document.querySelector('#add_task');
+const clearCompleted = document.querySelector('#clear_button');
 
 // Functions
-function markDone(element) {
+function markDone(element, index) {
   element.classList.add('check');
-  list.mark(element.parentElement.id);
+  list.mark(index);
   element.nextElementSibling.classList.add('mark');
 }
 
-function unmarkDone(element) {
+function unmarkDone(element, index) {
   element.classList.remove('check');
-  list.unmark(element.parentElement.id);
+  list.unmark(index);
   element.nextElementSibling.classList.remove('mark');
 }
 
-function createTask(task) {
+function createTask(taskElement) {
   const listItem = document.createElement('li');
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');
-  const taskText = document.createElement('textarea');
-  const dragIcon = document.createElement('div');
+  const taskText = document.createElement('input');
+  const dragIcon = document.createElement('span');
 
-  divItem.id = task.index;
   divItem.classList.add('flex', 'cell');
   taskcheck.setAttribute('type', 'checkbox');
   taskcheck.classList.add('checkbox');
-  taskcheck.checked = task.completed;
+  taskcheck.checked = taskElement.completed;
 
   taskText.classList.add('cell_textarea');
-  taskText.setAttribute('rows', '1');
-  taskText.innerHTML = task.description;
+  taskText.setAttribute('type', 'text');
+  taskText.value = taskElement.description;
 
   dragIcon.classList.add('drag_icon');
+  dragIcon.innerHTML = '&#8942;';
 
-  if (task.completed) {
+  if (taskElement.completed) {
     taskcheck.classList.add('check');
     taskText.classList.add('mark');
   }
@@ -51,12 +55,47 @@ function createTask(task) {
   divItem.appendChild(dragIcon);
   listContainer.appendChild(listItem);
 
-  taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck)));
-}
+  taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck, taskElement.index) : unmarkDone(taskcheck, taskElement.index)));
+  taskText.addEventListener('change', () => {
+    taskElement.description = taskText.value;
+    list.saveStorage();
+  });
 
-// Call functions
+  function deleteField() {
+    task.remove(list, taskText, taskElement);
+    list.saveStorage();
+  }
+
+  taskText.addEventListener('focusin', () => {
+    divItem.classList.add('editing');
+    dragIcon.innerHTML = '&#128465;';
+    dragIcon.addEventListener('click', deleteField);
+  });
+
+  taskText.addEventListener('focusout', () => {
+    divItem.classList.remove('editing');
+    dragIcon.innerHTML = '&#8942;';
+  });
+
+  list.saveStorage();
+}
 
 // Event listeners
 window.addEventListener('DOMContentLoaded', () => {
-  Object.values(list.list).forEach((value) => createTask(value));
+  list.list.forEach((value) => createTask(value));
+});
+
+enterIcon.addEventListener('click', () => task.add(newTask, list, createTask));
+clearCompleted.addEventListener('click', () => {
+  task.clear(list);
+  list.saveStorage();
+  listContainer.innerHTML = '';
+  list.list.forEach((value) => createTask(value));
+});
+
+newTask.addEventListener('keyup', (Event) => {
+  if (Event.code === 'Enter') {
+    Event.preventDefault();
+    enterIcon.click();
+  }
 });
