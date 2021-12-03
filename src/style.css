@@ -23,23 +23,24 @@ ul {
   padding: 0;
 }
 
-textarea {
+input[type="text"] {
   overflow: hidden;
   cursor: default;
   border: none;
   flex-grow: 2;
   color: black;
   font-weight: lighter;
+  background: transparent;
 }
 
-textarea::-webkit-resizer {
+input[type="text"]::-webkit-resizer {
   display: none;
 }
 
-textarea:focus-visible {
+input[type="text"]:focus-visible {
   outline: none;
 
-  /* background: yellow */
+  /* background: yellow; */
   text-decoration: none;
   color: #000;
 }
@@ -106,4 +107,8 @@ section > :last-child {
 
 .drag_icon:hover {
   cursor: move;
+}
+
+.editing {
+  background: #ffff0060;
 }

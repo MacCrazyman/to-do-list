@@ -28,7 +28,7 @@ function createTask(task) {
   const listItem = document.createElement('li');
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');
-  const taskText = document.createElement('textarea');
+  const taskText = document.createElement('input');
   const dragIcon = document.createElement('span');
 
   divItem.id = task.index;
@@ -38,8 +38,8 @@ function createTask(task) {
   taskcheck.checked = task.completed;
 
   taskText.classList.add('cell_textarea');
-  taskText.setAttribute('rows', '1');
-  taskText.innerHTML = task.description;
+  taskText.setAttribute('type', 'text');
+  taskText.value = task.description;
 
   dragIcon.classList.add('drag_icon');
   dragIcon.innerHTML = '&#8942;'
@@ -60,6 +60,16 @@ function createTask(task) {
     task.description = taskText.value;
     list.saveStorage();
   });
+  taskText.addEventListener('focusin', () => {
+    divItem.classList.add('editing');
+    dragIcon.innerHTML = '&#128465;'
+  })
+
+  taskText.addEventListener('focusout', () => {
+    divItem.classList.remove('editing');
+    dragIcon.innerHTML = '&#8942;'
+  })
+
   list.saveStorage();
 }
 
