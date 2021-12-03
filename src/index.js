@@ -24,27 +24,27 @@ function unmarkDone(element) {
   element.nextElementSibling.classList.remove('mark');
 }
 
-function createTask(task) {
+function createTask(taskElement) {
   const listItem = document.createElement('li');
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');
   const taskText = document.createElement('input');
   const dragIcon = document.createElement('span');
 
-  divItem.id = task.index;
+  divItem.id = taskElement.index;
   divItem.classList.add('flex', 'cell');
   taskcheck.setAttribute('type', 'checkbox');
   taskcheck.classList.add('checkbox');
-  taskcheck.checked = task.completed;
+  taskcheck.checked = taskElement.completed;
 
   taskText.classList.add('cell_textarea');
   taskText.setAttribute('type', 'text');
-  taskText.value = task.description;
+  taskText.value = taskElement.description;
 
   dragIcon.classList.add('drag_icon');
   dragIcon.innerHTML = '&#8942;'
 
-  if (task.completed) {
+  if (taskElement.completed) {
     taskcheck.classList.add('check');
     taskText.classList.add('mark');
   }
@@ -57,17 +57,24 @@ function createTask(task) {
 
   taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck)));
   taskText.addEventListener('change', () => {
-    task.description = taskText.value;
+    taskElement.description = taskText.value;
     list.saveStorage();
   });
+
+  function deleteField() {
+    task.remove(list,taskText,taskElement);
+    list.saveStorage();
+  }
+  
   taskText.addEventListener('focusin', () => {
     divItem.classList.add('editing');
-    dragIcon.innerHTML = '&#128465;'
+    dragIcon.innerHTML = '&#128465;';
+    dragIcon.addEventListener('click', deleteField);
   })
 
   taskText.addEventListener('focusout', () => {
     divItem.classList.remove('editing');
-    dragIcon.innerHTML = '&#8942;'
+    dragIcon.innerHTML = '&#8942;';
   })
 
   list.saveStorage();
