@@ -13,15 +13,15 @@ const newTask = document.querySelector('#add_task');
 const clearCompleted = document.querySelector('#clear_button');
 
 // Functions
-function markDone(element) {
+function markDone(element,index) {
   element.classList.add('check');
-  list.mark(element.parentElement.id);
+  list.mark(index);
   element.nextElementSibling.classList.add('mark');
 }
 
-function unmarkDone(element) {
+function unmarkDone(element,index) {
   element.classList.remove('check');
-  list.unmark(element.parentElement.id);
+  list.unmark(index);
   element.nextElementSibling.classList.remove('mark');
 }
 
@@ -43,7 +43,7 @@ function createTask(taskElement) {
   taskText.value = taskElement.description;
 
   dragIcon.classList.add('drag_icon');
-  dragIcon.innerHTML = '&#8942;'
+  dragIcon.innerHTML = '&#8942;';
 
   if (taskElement.completed) {
     taskcheck.classList.add('check');
@@ -56,27 +56,27 @@ function createTask(taskElement) {
   divItem.appendChild(dragIcon);
   listContainer.appendChild(listItem);
 
-  taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck) : unmarkDone(taskcheck)));
+  taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck,taskElement.index) : unmarkDone(taskcheck,taskElement.index)));
   taskText.addEventListener('change', () => {
     taskElement.description = taskText.value;
     list.saveStorage();
   });
 
   function deleteField() {
-    task.remove(list,taskText,taskElement);
+    task.remove(list, taskText, taskElement);
     list.saveStorage();
   }
-  
+
   taskText.addEventListener('focusin', () => {
     divItem.classList.add('editing');
     dragIcon.innerHTML = '&#128465;';
     dragIcon.addEventListener('click', deleteField);
-  })
+  });
 
   taskText.addEventListener('focusout', () => {
     divItem.classList.remove('editing');
     dragIcon.innerHTML = '&#8942;';
-  })
+  });
 
   list.saveStorage();
 }
@@ -86,17 +86,17 @@ window.addEventListener('DOMContentLoaded', () => {
   list.list.forEach((value) => createTask(value));
 });
 
-enterIcon.addEventListener('click',() => task.add(newTask,list,createTask));
+enterIcon.addEventListener('click', () => task.add(newTask, list, createTask));
 clearCompleted.addEventListener('click', () => {
   task.clear(list);
   list.saveStorage();
-  listContainer.innerHTML ='';
+  listContainer.innerHTML = '';
   list.list.forEach((value) => createTask(value));
 });
 
 newTask.addEventListener('keyup', (Event) => {
-  if (Event.code == 'Enter') {
+  if (Event.code === 'Enter') {
     Event.preventDefault();
     enterIcon.click();
-  };
-})
+  }
+});
