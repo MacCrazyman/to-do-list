@@ -81,8 +81,6 @@ function createTask(taskElement) {
   list.saveStorage();
 }
 
-// Call functions
-
 // Event listeners
 window.addEventListener('DOMContentLoaded', () => {
   list.list.forEach((value) => createTask(value));
@@ -95,3 +93,10 @@ clearCompleted.addEventListener('click', () => {
   listContainer.innerHTML ='';
   list.list.forEach((value) => createTask(value));
 });
+
+newTask.addEventListener('keyup', (Event) => {
+  if (Event.code == 'Enter') {
+    Event.preventDefault();
+    enterIcon.click();
+  };
+})
