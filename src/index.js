@@ -10,6 +10,7 @@ const list = new Status();
 const listContainer = document.querySelector('#list_container');
 const enterIcon = document.querySelector('#enter_icon');
 const newTask = document.querySelector('#add_task');
+const clearCompleted = document.querySelector('#clear_button');
 
 // Functions
 function markDone(element) {
@@ -87,4 +88,10 @@ window.addEventListener('DOMContentLoaded', () => {
   list.list.forEach((value) => createTask(value));
 });
 
-enterIcon.addEventListener('click',() => task.add(newTask,list,createTask))
+enterIcon.addEventListener('click',() => task.add(newTask,list,createTask));
+clearCompleted.addEventListener('click', () => {
+  task.clear(list);
+  list.saveStorage();
+  listContainer.innerHTML ='';
+  list.list.forEach((value) => createTask(value));
+});

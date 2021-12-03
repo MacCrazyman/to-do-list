@@ -20,7 +20,9 @@ export function remove (list,taskText,taskElement,storage) {
   taskText.parentElement.parentElement.remove()
 }
 
-export function clear (task) {
+export function clear (list) {
+  list.list = list.list.filter((element) => element.completed===false);
+  order(list);
   console.log('clear completed');
 }
 
