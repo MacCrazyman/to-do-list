@@ -85,7 +85,13 @@ window.addEventListener('DOMContentLoaded', () => {
   list.list.forEach((value) => createTask(value));
 });
 
-enterIcon.addEventListener('click', () => task.add(newTask, list, createTask));
+enterIcon.addEventListener('click', () => {
+  if (newTask.value.trim() !== '') {
+    task.add(newTask, list);
+    createTask(list.list[list.list.length - 1]);
+  }
+  newTask.value = '';
+});
 clearCompleted.addEventListener('click', () => {
   task.clear(list);
   list.saveStorage();
