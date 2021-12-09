@@ -9,6 +9,11 @@
     "start": "webpack serve --open",
     "build": "webpack"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MacCrazyman/to-do-list.git"
@@ -21,7 +26,10 @@
   },
   "homepage": "https://github.com/MacCrazyman/to-do-list#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.2",
+    "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -39,6 +47,7 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "jsdom": "^19.0.0"
   }
 }
