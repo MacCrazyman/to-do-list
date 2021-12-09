@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 enterIcon.addEventListener('click', () => {
   if (newTask.value.trim() !== '') {
-    task.add(newTask, list, createTask);
+    task.add(newTask, list);
     createTask(list.list[list.list.length - 1]);
   }
   newTask.value = '';
