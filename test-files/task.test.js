@@ -1,6 +1,7 @@
 import { JSDOM } from 'jsdom';
+
 const dom = new JSDOM(); global.document = dom.window.document; global.window = dom.window;
-const task = require('../src/task');
+const task = require('../src/task.js');
 
 const newTask = {
   value: 'first task',
@@ -26,17 +27,14 @@ describe('Testing add and remove', () => {
     expect(list.list).toHaveLength(3);
   });
 
-  test('Test add function', () => {
+  test('Test remove function', () => {
     document.body.innerHTML = `<ul id="list_container">
   <li><div class="flex cell"><input type="checkbox" class="checkbox"><input class="cell_textarea" id ="1" type="text"><span class="drag_icon">⋮</span></div></li>
-  <li><div class="flex cell"><input type="checkbox" class="checkbox"><input class="cell_textarea" id ="2" type="text"><span class="drag_icon">⋮</span></div></li>
   </ul>`;
 
     const task1 = document.getElementById('1');
-    const task2 = document.getElementById('2');
 
     task.remove(list, task1, list.list[0]);
-    expect(list.list).toHaveLength(1);
-    
+    expect(list.list).toHaveLength(2);
   });
 });
