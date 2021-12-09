@@ -23,4 +23,4 @@ function clear(list) {
   order(list);
 }
 
-module.exports = {add, remove};
+module.exports = { add, remove, clear };
