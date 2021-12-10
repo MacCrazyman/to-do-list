@@ -1,5 +1,6 @@
 import { JSDOM } from 'jsdom';
-import * as index from '../src/index.js';
+import {markDone, unmarkDone, createTask} from '../src/index.js';
+
 
 const dom = new JSDOM();
 global.document = dom.window.document;
@@ -24,8 +25,11 @@ const list = {
   ],
 };
 
+const localStorage = {};
+
 document.body.innerHTML = `<ul id="list_container"></ul>`;
 
 describe('testing edit function', () => {
-  
+  index.createTask(list.list[0]);
+  console.log(document.body.innerHTML);
 });
