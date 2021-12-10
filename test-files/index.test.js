@@ -12,7 +12,7 @@ describe('testing edit function', () => {
     expect(taskElement.description).toEqual(taskText.value);
   });
 
-  test('The status of the task should change from false to true', () =>{
+  test('The status of the task should change from false to true', () => {
     list.mark(0);
     expect(list.list[0].completed).toBeTruthy();
   });
@@ -20,5 +20,5 @@ describe('testing edit function', () => {
   test('The array should be empty', () => {
     task.clear(list);
     expect(list.list).toHaveLength(0);
-  })
+  });
 });
