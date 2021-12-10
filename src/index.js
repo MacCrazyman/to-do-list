@@ -57,10 +57,9 @@ export function createTask(taskElement) {
 
   taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck, taskElement.index) : unmarkDone(taskcheck, taskElement.index)));
   taskText.addEventListener('change', () => {
-    task.updateTask(taskElement,taskText);
+    task.updateTask(taskElement, taskText);
     list.saveStorage();
   });
-
 
   function deleteField() {
     task.remove(list, taskText, taskElement);
@@ -105,4 +104,4 @@ newTask.addEventListener('keyup', (Event) => {
     Event.preventDefault();
     enterIcon.click();
   }
-})
+});
