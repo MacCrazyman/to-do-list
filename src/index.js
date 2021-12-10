@@ -1,5 +1,5 @@
 // Imports
-// import './style.css';
+import './style.css';
 import Status from './status.js';
 import * as task from './task.js';
 
@@ -13,19 +13,19 @@ const newTask = document.querySelector('#add_task');
 const clearCompleted = document.querySelector('#clear_button');
 
 // Functions
-export function markDone(element, index) {
+function markDone(element, index) {
   element.classList.add('check');
   list.mark(index);
   element.nextElementSibling.classList.add('mark');
 }
 
-export function unmarkDone(element, index) {
+function unmarkDone(element, index) {
   element.classList.remove('check');
   list.unmark(index);
   element.nextElementSibling.classList.remove('mark');
 }
 
-export function createTask(taskElement) {
+function createTask(taskElement) {
   const listItem = document.createElement('li');
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');

@@ -1,8 +1,8 @@
 import { JSDOM } from 'jsdom';
 import * as task from '../src/task.js';
+import Status from '../src/status.js';
 
-// jest.mock('./__mocks__/localStorage.js');
-
+const list = new Status();
 const dom = new JSDOM();
 global.document = dom.window.document;
 global.window = dom.window;
