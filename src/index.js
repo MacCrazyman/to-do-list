@@ -13,19 +13,19 @@ const newTask = document.querySelector('#add_task');
 const clearCompleted = document.querySelector('#clear_button');
 
 // Functions
-function markDone(element, index) {
+export function markDone(element, index) {
   element.classList.add('check');
   list.mark(index);
   element.nextElementSibling.classList.add('mark');
 }
 
-function unmarkDone(element, index) {
+export function unmarkDone(element, index) {
   element.classList.remove('check');
   list.unmark(index);
   element.nextElementSibling.classList.remove('mark');
 }
 
-function createTask(taskElement) {
+export function createTask(taskElement) {
   const listItem = document.createElement('li');
   const divItem = document.createElement('div');
   const taskcheck = document.createElement('input');
@@ -57,7 +57,7 @@ function createTask(taskElement) {
 
   taskcheck.addEventListener('click', () => (taskcheck.checked ? markDone(taskcheck, taskElement.index) : unmarkDone(taskcheck, taskElement.index)));
   taskText.addEventListener('change', () => {
-    task.updateTask(taskElement,taskText);
+    task.updateTask(taskElement, taskText);
     list.saveStorage();
   });
 

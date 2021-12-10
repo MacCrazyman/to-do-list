@@ -1,4 +1,4 @@
-export function updateTask(taskElement,taskText) {
+export function updateTask(taskElement, taskText) {
   taskElement.description = taskText.value;
 }
 
